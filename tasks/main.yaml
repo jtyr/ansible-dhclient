@@ -1,0 +1,33 @@
+---
+
+- name: Install dhclient
+  package:
+    name: "{{ dhclient_pkg }}"
+  tags:
+    - dhclient_pkg
+
+- name: Create configuration files
+  template:
+    src: dhclient.conf.j2
+    dest: "{{ dhclient_configs_root ~ '/' ~ item.key }}.conf"
+  with_dict: "{{ dhclient_configs }}"
+  tags:
+    - dhclient_configs
+
+- name: Create hooks files
+  template:
+    src: script.j2
+    dest: "{{ dhclient_hooks_root ~ '/' ~ item.key }}"
+    mode: 0755
+  with_dict: "{{ dhclient_hooks }}"
+  tags:
+    - dhclient_hooks
+
+- name: Create scripts files
+  template:
+    src: script.j2
+    dest: "{{ dhclient_scripts_root ~ '/' ~ item.key }}.sh"
+    mode: 0755
+  with_dict: "{{ dhclient_scripts }}"
+  tags:
+    - dhclient_scripts

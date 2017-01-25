@@ -1,0 +1,2 @@
+{{ (ansible_managed | comment ~ '\n') if (item.value | length > 2 and item.value[:2] != '#!') else '' }}
+{{ item.value }}

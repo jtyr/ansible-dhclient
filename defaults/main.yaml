@@ -1,0 +1,22 @@
+---
+
+# Package to be installed (explicit version can be specified here)
+dhclient_pkg: dhclient
+
+# Root path to the config files
+dhclient_configs_root: /etc/dhcp
+
+# Configuration
+dhclient_configs: {}
+
+# Root path to the hooks config files
+dhclient_hooks_root: "{{ dhclient_configs_root }}"
+
+# Hooks configuration
+dhclient_hooks: {}
+
+# Path to the scripts directory
+dhclient_scripts_root: "{{ dhclient_configs_root }}/dhclient.d"
+
+# Scripts configuration
+dhclient_scripts: {}
